@@ -142,7 +142,11 @@ async function saveDBLocal(data) {
 }
 
 async function readDBBlob() {
-  const { blobs } = await list({ prefix: BLOB_PATHNAME, limit: 10 });
+  const { blobs } = await list({
+    prefix: BLOB_PATHNAME,
+    limit: 10,
+    token: process.env.BLOB_READ_WRITE_TOKEN
+  });
   const match = blobs.find((b) => b.pathname === BLOB_PATHNAME) || blobs[0];
   if (!match) {
     const seed = JSON.parse(JSON.stringify(SEED_DATA));
@@ -150,14 +154,33 @@ async function readDBBlob() {
     return seed;
   }
 
-  const result = await get(match.url, { access: 'private' });
-  if (!result || !result.stream) {
-    const seed = JSON.parse(JSON.stringify(SEED_DATA));
-    await saveDBBlob(seed);
-    return seed;
+  let raw = null;
+  try {
+    const result = await get(match.url, {
+      access: 'private',
+      token: process.env.BLOB_READ_WRITE_TOKEN
+    });
+    if (result && result.stream) {
+      raw = await new Response(result.stream).text();
+    }
+  } catch (err) {
+    console.warn('[Blob Storage] get() failed, falling back to fetch:', err.message);
   }
 
-  const raw = await new Response(result.stream).text();
+  if (!raw) {
+    const res = await fetch(match.url, {
+      headers: process.env.BLOB_READ_WRITE_TOKEN
+        ? { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` }
+        : undefined
+    });
+    if (!res.ok) {
+      const seed = JSON.parse(JSON.stringify(SEED_DATA));
+      await saveDBBlob(seed);
+      return seed;
+    }
+    raw = await res.text();
+  }
+
   const parsed = JSON.parse(raw);
   if (!parsed.biomed_api_keys) {
     parsed.biomed_api_keys = SEED_DATA.biomed_api_keys;
@@ -179,7 +202,11 @@ async function saveDBBlob(data) {
 
 async function initDatabase() {
   if (useBlob()) {
-    const { blobs } = await list({ prefix: BLOB_PATHNAME, limit: 1 });
+    const { blobs } = await list({
+      prefix: BLOB_PATHNAME,
+      limit: 1,
+      token: process.env.BLOB_READ_WRITE_TOKEN
+    });
     if (!blobs.length) {
       await saveDBBlob(JSON.parse(JSON.stringify(SEED_DATA)));
       console.log('[Blob Storage] Seeded biomed-db.json');

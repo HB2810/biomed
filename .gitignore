@@ -1,0 +1,13 @@
+node_modules/
+client/node_modules/
+server/node_modules/
+.vercel
+.env
+.env.local
+.env*.local
+dist/
+client/dist/
+*.log
+.DS_Store
+data/backups/
+server/data/backups/

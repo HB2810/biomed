@@ -1,0 +1,182 @@
+{
+  "biomed_staff": [
+    {
+      "id": "STF-100",
+      "loginId": "admin",
+      "password": "admin123",
+      "name": "System Admin (Superuser)",
+      "role": "System Admin",
+      "email": "admin.biomed@hospital.org",
+      "phone": "+91 98765 00000",
+      "privileges": "System Admin (Full IT & User Control)"
+    },
+    {
+      "id": "STF-101",
+      "loginId": "hod",
+      "password": "hod123",
+      "name": "Dr. Alok Verma",
+      "role": "Biomedical HOD",
+      "email": "hod.biomed@hospital.org",
+      "phone": "+91 98765 43210",
+      "privileges": "HOD Executive (Approvals & Oversight)"
+    },
+    {
+      "id": "STF-102",
+      "loginId": "staff",
+      "password": "staff123",
+      "name": "Eng. Rajesh Sharma",
+      "role": "Senior BioMed Engineer",
+      "specialty": "ICU & Life Support",
+      "phone": "+91 98765 43211",
+      "privileges": "Staff Technician (Task Execution)"
+    }
+  ],
+  "biomed_api_keys": [
+    {
+      "id": "KEY-8080-01",
+      "name": "Hospital Information System (HIS) Port 8080 Key",
+      "apiKey": "bmp_live_his_8080_9a8b7c6d5e",
+      "client": "City General HIS Port 8080",
+      "permissions": "read_write",
+      "createdAt": "2025-09-15 10:00",
+      "status": "Active"
+    },
+    {
+      "id": "KEY-8080-02",
+      "name": "Radiology PACS Gateway Port 8080 Key",
+      "apiKey": "bmp_live_pacs_8080_1a2b3c4d5e",
+      "client": "CathLab & CT Suite",
+      "permissions": "read_only",
+      "createdAt": "2025-09-15 11:30",
+      "status": "Active"
+    },
+    {
+      "id": "KEY-8080-03",
+      "name": "Biomedical Engineering Suite Master API Key",
+      "apiKey": "bmp_live_bme_suite_8080_7f8e9d0c1b",
+      "client": "Biomedical Engineering Suite",
+      "permissions": "full_admin_interop",
+      "createdAt": "2025-09-15 12:00",
+      "status": "Active"
+    }
+  ],
+  "biomed_settings": [
+    {
+      "key": "hospital_name",
+      "value": "City General Super-Specialty Hospital"
+    },
+    {
+      "key": "biomed_department_code",
+      "value": "MED-TECH-BIO-01"
+    },
+    {
+      "key": "currency_symbol",
+      "value": "₹"
+    },
+    {
+      "key": "auto_alert_recipient_email",
+      "value": "amc.biomed@hospital.org"
+    },
+    {
+      "key": "auto_alert_whatsapp_number",
+      "value": "919876543210"
+    }
+  ],
+  "biomed_contract_alerts": [
+    {
+      "id": "ALT-6674",
+      "equipmentId": "EQ-2002",
+      "equipmentName": "High-Frequency C-Arm X-Ray Machine",
+      "contractType": "AMC",
+      "vendorName": "Ziehm Imaging India",
+      "expiryDate": "2026-11-05",
+      "daysRemaining": 51,
+      "dispatchedEmail": "amc.biomed@hospital.org",
+      "dispatchedWhatsApp": "919876543210",
+      "whatsappUrl": "https://api.whatsapp.com/send?phone=919876500113&text=%F0%9F%9A%A8%20AUTOMATED%20AMC%20RENEWAL%20ALERT%20(Port%208080)%3A%20Equipment%20%22High-Frequency%20C-Arm%20X-Ray%20Machine%22%20(Ziehm%20Solo%20FD%2C%20S%2FN%3A%20SN-CARM-9910)%20in%20Radiology%20%2F%20Cath%20Lab%20contract%20expires%20on%202026-11-05%20(51%20days%20remaining).%20Vendor%3A%20Ziehm%20Imaging%20India.%20Immediate%20renewal%20required!",
+      "messageText": "🚨 AUTOMATED AMC RENEWAL ALERT (Port 8080): Equipment \"High-Frequency C-Arm X-Ray Machine\" (Ziehm Solo FD, S/N: SN-CARM-9910) in Radiology / Cath Lab contract expires on 2026-11-05 (51 days remaining). Vendor: Ziehm Imaging India. Immediate renewal required!",
+      "timestamp": "9/15/2026, 7:38:48 PM",
+      "status": "AUTOMATICALLY_DISPATCHED"
+    },
+    {
+      "id": "ALT-3242",
+      "equipmentId": "EQ-2001",
+      "equipmentName": "High-End Anesthesia Workstation",
+      "contractType": "CMC",
+      "vendorName": "Penlon Medical Pvt Ltd",
+      "expiryDate": "2026-10-20",
+      "daysRemaining": 35,
+      "dispatchedEmail": "amc.biomed@hospital.org",
+      "dispatchedWhatsApp": "919876543210",
+      "whatsappUrl": "https://api.whatsapp.com/send?phone=919876500112&text=%F0%9F%9A%A8%20AUTOMATED%20CMC%20RENEWAL%20ALERT%20(Port%208080)%3A%20Equipment%20%22High-End%20Anesthesia%20Workstation%22%20(Prima%20450%2C%20S%2FN%3A%20SN-ANESTH-8842)%20in%20Operation%20Theatre%203%20contract%20expires%20on%202026-10-20%20(35%20days%20remaining).%20Vendor%3A%20Penlon%20Medical%20Pvt%20Ltd.%20Immediate%20renewal%20required!",
+      "messageText": "🚨 AUTOMATED CMC RENEWAL ALERT (Port 8080): Equipment \"High-End Anesthesia Workstation\" (Prima 450, S/N: SN-ANESTH-8842) in Operation Theatre 3 contract expires on 2026-10-20 (35 days remaining). Vendor: Penlon Medical Pvt Ltd. Immediate renewal required!",
+      "timestamp": "9/15/2026, 7:38:48 PM",
+      "status": "AUTOMATICALLY_DISPATCHED"
+    }
+  ],
+  "biomed_audit_log": [
+    {
+      "id": "LOG-501",
+      "timestamp": "2025-09-14 10:15",
+      "user": "System Admin",
+      "action": "Port 8080 Node.js Integrated REST API Initialized"
+    }
+  ],
+  "biomed_todos": [
+    {
+      "id": "TODO-1001",
+      "title": "Quarterly Preventive Maintenance on ER Ventilators",
+      "assignedTo": "Eng. Rajesh Sharma",
+      "category": "Preventive Maintenance",
+      "priority": "High",
+      "dueDate": "2025-09-20",
+      "status": "In Progress"
+    }
+  ],
+  "biomed_equipment": [
+    {
+      "id": "EQ-2001",
+      "name": "High-End Anesthesia Workstation",
+      "model": "Prima 450",
+      "serial": "SN-ANESTH-8842",
+      "department": "Operation Theatre 3",
+      "status": "Operational",
+      "purchasePrice": "₹ 18,50,000",
+      "contractType": "CMC",
+      "contractVendor": "Penlon Medical Pvt Ltd",
+      "vendorEmail": "service.india@penlon.com",
+      "vendorPhone": "919876500112",
+      "contractStartDate": "2023-10-20",
+      "contractEndDate": "2026-10-20",
+      "contractExpiryDate": "2026-10-20"
+    },
+    {
+      "id": "EQ-2002",
+      "name": "High-Frequency C-Arm X-Ray Machine",
+      "model": "Ziehm Solo FD",
+      "serial": "SN-CARM-9910",
+      "department": "Radiology / Cath Lab",
+      "status": "Under Calibration",
+      "purchasePrice": "₹ 42,00,000",
+      "contractType": "AMC",
+      "contractVendor": "Ziehm Imaging India",
+      "vendorEmail": "amc.service@ziehm.in",
+      "vendorPhone": "919876500113",
+      "contractStartDate": "2024-11-05",
+      "contractEndDate": "2026-11-05",
+      "contractExpiryDate": "2026-11-05"
+    }
+  ],
+  "biomed_work_orders": [
+    {
+      "id": "WO-3001",
+      "equipmentId": "EQ-2001",
+      "equipmentName": "High-End Anesthesia Workstation",
+      "department": "Operation Theatre 3",
+      "breakdownType": "Vaporizer Flow Leak",
+      "priority": "Critical",
+      "assignedTo": "Eng. Rajesh Sharma",
+      "status": "In Progress"
+    }
+  ]
+}

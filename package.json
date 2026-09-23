@@ -1,0 +1,18 @@
+{
+  "name": "biomedpulse-os",
+  "version": "2.0.0",
+  "private": true,
+  "description": "BioMedPulse OS - Hospital Biomedical Engineering Suite (Vite frontend + Vercel serverless API)",
+  "scripts": {
+    "dev:server": "node server/server.js",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.27.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

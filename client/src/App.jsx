@@ -38,11 +38,11 @@ function MainAppContent() {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-frame app-container">
       <Sidebar currentView={currentView} onViewChange={setCurrentView} />
-      <main className="app-main">
+      <main className="app-main main-content">
         <Header currentView={currentView} onActionClick={() => alert('Quick Action Triggered')} />
-        <div className="content-body">
+        <div className="content-body page-shell">
           {renderView()}
         </div>
       </main>

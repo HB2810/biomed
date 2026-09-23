@@ -19,54 +19,104 @@ export function LoginModal() {
   };
 
   return (
-    <div className="modal-backdrop" onClick={(e) => { if (e.target === e.currentTarget && currentUser) setShowLoginModal(false); }}>
+    <div
+      className="modal-backdrop"
+      onClick={(e) => {
+        if (e.target === e.currentTarget && currentUser) setShowLoginModal(false);
+      }}
+    >
       <div className="modal-content" style={{ position: 'relative' }}>
         {currentUser && (
           <button
+            type="button"
             onClick={() => setShowLoginModal(false)}
             style={{
               position: 'absolute',
-              top: '16px',
-              right: '16px',
-              background: 'rgba(255,255,255,0.2)',
-              border: 'none',
-              color: '#ffffff',
-              fontSize: '1.1rem',
+              top: '12px',
+              right: '12px',
+              background: 'transparent',
+              border: '1px solid var(--line)',
+              color: 'var(--muted)',
+              fontSize: '0.95rem',
               width: '30px',
               height: '30px',
-              borderRadius: '50%',
+              borderRadius: '8px',
               cursor: 'pointer',
               zIndex: 10
             }}
-            title="Close Login Modal"
+            title="Close"
           >
             ✕
           </button>
         )}
 
-        <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', color: '#ffffff', padding: '24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '48px', height: '48px', background: '#ffffff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/assets/stavya-symbol-transparent.png" alt="Stavya" style={{ width: '32px', height: '32px' }} />
-          </div>
+        <div className="login-brand-bar">
+          <img src="/assets/stavya_logo.png" alt="Stavya Intelligence" />
           <div>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 800 }}>Stavya Intelligence</h3>
-            <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Biomedical Engineering Suite</p>
+            <h3>Stavya Intelligence</h3>
+            <p>Biomedical Engineering Suite</p>
           </div>
         </div>
 
-        <div style={{ padding: '24px' }}>
-          <h4 style={{ textAlign: 'center', marginBottom: '4px', fontSize: '1.05rem', color: 'var(--text-main)' }}>Portal Authentication</h4>
-          <p style={{ textAlign: 'center', marginBottom: '18px', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Sign in with your Login ID & Password to access features.</p>
+        <div style={{ padding: '8px 24px 24px' }}>
+          <div className="login-safety-chip">
+            Secure portal authentication for hospital biomed staff
+          </div>
+
+          <h4
+            style={{
+              textAlign: 'center',
+              marginBottom: '4px',
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: 'var(--navy)'
+            }}
+          >
+            Sign in
+          </h4>
+          <p
+            style={{
+              textAlign: 'center',
+              marginBottom: '18px',
+              fontSize: '0.8125rem',
+              color: 'var(--muted)'
+            }}
+          >
+            Enter your Login ID and password to continue.
+          </p>
 
           {errorMsg && (
-            <div style={{ background: '#fee2e2', color: '#991b1b', padding: '10px 14px', borderRadius: '8px', fontSize: '0.82rem', marginBottom: '14px', textAlign: 'center', fontWeight: 600 }}>
+            <div
+              style={{
+                background: '#fef2f2',
+                color: '#b91c1c',
+                border: '1px solid #fecaca',
+                padding: '10px 14px',
+                borderRadius: '8px',
+                fontSize: '0.8125rem',
+                marginBottom: '14px',
+                textAlign: 'center',
+                fontWeight: 600
+              }}
+            >
               {errorMsg}
             </div>
           )}
 
           <form onSubmit={handleSubmit}>
             <div style={{ marginBottom: '14px' }}>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '4px' }}>Login ID / Username</label>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  marginBottom: '6px',
+                  color: 'var(--muted)',
+                  letterSpacing: '0.02em'
+                }}
+              >
+                Login ID
+              </label>
               <input
                 type="text"
                 value={loginId}
@@ -74,25 +124,54 @@ export function LoginModal() {
                 placeholder="Enter your Login ID"
                 required
                 autoComplete="username"
-                style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-strong)', fontSize: '0.88rem' }}
+                style={{
+                  width: '100%',
+                  height: '44px',
+                  padding: '0 14px',
+                  borderRadius: '8px',
+                  border: '1px solid var(--line-strong)',
+                  fontSize: '0.875rem'
+                }}
               />
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '4px' }}>Password</label>
+              <label
+                style={{
+                  display: 'block',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  marginBottom: '6px',
+                  color: 'var(--muted)',
+                  letterSpacing: '0.02em'
+                }}
+              >
+                Password
+              </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter Password"
+                placeholder="Enter password"
                 required
                 autoComplete="current-password"
-                style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-strong)', fontSize: '0.88rem' }}
+                style={{
+                  width: '100%',
+                  height: '44px',
+                  padding: '0 14px',
+                  borderRadius: '8px',
+                  border: '1px solid var(--line-strong)',
+                  fontSize: '0.875rem'
+                }}
               />
             </div>
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', height: '42px', borderRadius: '21px', justifyContent: 'center' }}>
-              Sign In to Stavya Intelligence
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: '100%', height: '42px', justifyContent: 'center' }}
+            >
+              Sign in
             </button>
           </form>
         </div>

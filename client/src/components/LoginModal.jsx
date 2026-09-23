@@ -18,12 +18,6 @@ export function LoginModal() {
     }
   };
 
-  const handleQuickLogin = (id, pass) => {
-    setLoginId(id);
-    setPassword(pass);
-    loginWithCredentials(id, pass);
-  };
-
   return (
     <div className="modal-backdrop" onClick={(e) => { if (e.target === e.currentTarget && currentUser) setShowLoginModal(false); }}>
       <div className="modal-content" style={{ position: 'relative' }}>
@@ -77,8 +71,9 @@ export function LoginModal() {
                 type="text"
                 value={loginId}
                 onChange={(e) => setLoginId(e.target.value)}
-                placeholder="Enter ID (e.g. admin, hod, staff)"
+                placeholder="Enter your Login ID"
                 required
+                autoComplete="username"
                 style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-strong)', fontSize: '0.88rem' }}
               />
             </div>
@@ -91,41 +86,15 @@ export function LoginModal() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
                 required
+                autoComplete="current-password"
                 style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-strong)', fontSize: '0.88rem' }}
               />
             </div>
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', height: '42px', borderRadius: '21px', justifyContent: 'center' }}>
-              🔐 Sign In to Stavya Intelligence
+              Sign In to Stavya Intelligence
             </button>
           </form>
-
-          <div style={{ marginTop: '20px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '12px' }}>
-            <div style={{ fontWeight: 700, fontSize: '0.8rem', marginBottom: '8px', color: 'var(--blue-primary)' }}>
-              🔑 Quick 1-Click Role Switch:
-            </div>
-            <div
-              onClick={() => handleQuickLogin('admin', 'admin123')}
-              style={{ fontSize: '0.78rem', display: 'flex', justifyContent: 'space-between', marginBottom: '6px', alignItems: 'center', padding: '8px 12px', background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '8px', cursor: 'pointer' }}
-            >
-              <span>🛡️ <strong>System Admin:</strong> admin</span>
-              <span style={{ background: '#e0f2fe', color: '#0369a1', padding: '2px 8px', borderRadius: '6px', fontWeight: 700, fontSize: '0.72rem' }}>1-Click Login ⚡</span>
-            </div>
-            <div
-              onClick={() => handleQuickLogin('hod', 'hod123')}
-              style={{ fontSize: '0.78rem', display: 'flex', justifyContent: 'space-between', marginBottom: '6px', alignItems: 'center', padding: '8px 12px', background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '8px', cursor: 'pointer' }}
-            >
-              <span>👑 <strong>Biomed HOD:</strong> hod</span>
-              <span style={{ background: '#fef3c7', color: '#b45309', padding: '2px 8px', borderRadius: '6px', fontWeight: 700, fontSize: '0.72rem' }}>1-Click Login ⚡</span>
-            </div>
-            <div
-              onClick={() => handleQuickLogin('staff', 'staff123')}
-              style={{ fontSize: '0.78rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '8px', cursor: 'pointer' }}
-            >
-              <span>🛠️ <strong>BioMed Engineer:</strong> staff</span>
-              <span style={{ background: '#f1f5f9', color: '#475569', padding: '2px 8px', borderRadius: '6px', fontWeight: 700, fontSize: '0.72rem' }}>1-Click Login ⚡</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
